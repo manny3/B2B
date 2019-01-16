@@ -55,52 +55,6 @@
       </tbody>
 
     </table>
-    <!-- <Pagination
-      :pages="pagination"
-      @emitPages="getProducts"
-    ></Pagination> -->
-    <!-- <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li
-          class="page-item"
-          :class="{'disabled': !pagination.has_pre}"
-          @click.prevent="getProducts(pagination.current_page -1)"
-        >
-          <a
-            class="page-link"
-            href="#"
-            aria-label="Previous"
-          >
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li
-          class="page-item"
-          v-for="page in pagination.total_pages"
-          :key="page"
-          :class="{'active': pagination.current_page === page}"
-        ><a
-            class="page-link"
-            href="#"
-            @click.prevent="getProducts(page)"
-          >{{page}}</a></li>
-        <li
-          class="page-item"
-          :class="{'disabled': !pagination.has_next}"
-          @click.prevent="getProducts(pagination.current_page +1)"
-        >
-          <a
-            class="page-link"
-            href="#"
-            aria-label="Next"
-          >
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
-    </nav> -->
 
     <!-- Modal -->
     <div
@@ -463,14 +417,15 @@
               // console.log(vm.tempProduct);
               vm.$set(vm.tempProduct, "imageUrl", response.data.imageUrl);
             } else {
-              // this.$bus.$emit("message:push", response.data.message, "danger");
+              console.log(response.data.message);
+              this.$bus.$emit("message:push", response.data.message, "danger");
             }
           });
       }
     },
     created() {
       this.getProducts();
-      // vm.$bus.$emit("messsage:push", "這裡是一段訊息", "success");
+      // this.$bus.$emit("messsage:push", "這裡是一段訊息", "success");
     }
   };
 </script>
